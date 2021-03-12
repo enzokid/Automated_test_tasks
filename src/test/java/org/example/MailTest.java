@@ -20,18 +20,18 @@ public class MailTest {
         System.setProperty("webdriver.gecko.driver", ConfProperties.getProperty("geckodriver"));
         WebDriver driver = new FirefoxDriver();
 
-        StartPage startPage = new StartPage(driver);
+        //StartPage startPage = new StartPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(ConfProperties.getProperty("startpage")); }
+        driver.get(ConfProperties.getProperty("loginpage")); }
 
     @Test
     public void mailTest() {
 
 
-        startPage.clickMailButton();
+        //startPage.clickMailButton();
 
         loginPage.inputLogin(ConfProperties.getProperty("login"));
 
@@ -40,6 +40,8 @@ public class MailTest {
         loginPage.inputPassword(ConfProperties.getProperty("password"));
 
         loginPage.clickPasswordButton();
+
+        driver.quit();
 
 
         }
