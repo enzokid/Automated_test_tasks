@@ -1,51 +1,26 @@
 package org.example;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.After;
+
+
+
 import org.junit.Test;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.concurrent.TimeUnit;
+import static com.codeborne.selenide.Selenide.switchTo;
 
-public class MailTest {
-
-    public static StartPage startPage;
-    public static LoginPage loginPage;
-    public static WebDriver driver;
-
-
-    @BeforeClass
-    public static void setup() {
-
-        System.setProperty("webdriver.gecko.driver", ConfProperties.getProperty("geckodriver"));
-        WebDriver driver = new FirefoxDriver();
-
-        //StartPage startPage = new StartPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(ConfProperties.getProperty("loginpage")); }
+public class MailTest extends BaseClass {
 
     @Test
     public void mailTest() {
 
-
-        //startPage.clickMailButton();
-
-        loginPage.inputLogin(ConfProperties.getProperty("login"));
-
+        loginPage.acceptCookies();
         loginPage.clickLoginButton();
-
-        loginPage.inputPassword(ConfProperties.getProperty("password"));
+        switchTo().window(1);
+        loginPage.inputLogin("leader.test1");
 
         loginPage.clickPasswordButton();
 
-        driver.quit();
 
-
-        }
+    }
 
 
 }
-
