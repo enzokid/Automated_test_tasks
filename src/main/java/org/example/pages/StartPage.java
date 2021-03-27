@@ -1,21 +1,23 @@
 package org.example.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class StartPage {
 
-    public WebDriver driver;
-    public StartPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver; }
+    private SelenideElement acceptCookies = $(".sc-pNWxx.sc-jrsJCI.dryRrI.emsrNO");
+    private SelenideElement mailButton = $(".button.desk-notif-card__login-enter-expanded");
 
-    @FindBy(xpath = "/html/body/div[1]/div[1]/div/div[1]/div/a")
-    private WebElement mailButton;
+
+    public void acceptCookies() {
+        acceptCookies.click();
+    }
 
     public void clickMailButton() {
-        mailButton.click(); }
+
+        mailButton.click();
+    }
 
 }

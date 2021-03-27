@@ -1,26 +1,22 @@
 package org.example;
-import org.junit.After;
-
-
-
 import org.junit.Test;
 
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MailTest extends BaseClass {
 
     @Test
     public void mailTest() {
 
-        loginPage.acceptCookies();
-        loginPage.clickLoginButton();
-        switchTo().window(1);
-        loginPage.inputLogin("leader.test1");
+        startPage.acceptCookies();
+        startPage.clickMailButton();
 
+        switchTo().window(1);
+
+        loginPage.setLogin("leader.test1");
+        loginPage.clickLoginButton();
+        loginPage.setPassword("leader");
         loginPage.clickPasswordButton();
 
-
     }
-
-
 }
